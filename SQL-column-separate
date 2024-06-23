@@ -1,0 +1,19 @@
+ CASE
+        WHEN staff_2.employee_name_text IS NOT NULL THEN '; ' || MAX(staff_2.employee_name_text)
+        ELSE ''
+    END,
+    ' ',
+    MAX(staff_3.employee_name_text),
+    ' ',
+    MAX(staff_4.employee_name_text),
+    ' ',
+    MAX(staff_5.employee_name_text)
+) AS "employee_name_text"
+
+
+LEFT JOIN    "XXXX".staff AS csstaff ON csstaff.employee = t.qc_staff
+LEFT JOIN    "XXXX".staff AS staff_1 ON staff_1.employee = SPLIT_PART(t.qc_staff, ';', 1)
+LEFT JOIN    "XXXX".staff AS staff_2 ON staff_2.employee = SPLIT_PART(t.qc_staff, ';', 2)
+LEFT JOIN    "XXXX".staff AS staff_3 ON staff_3.employee = SPLIT_PART(t.qc_staff, ';', 3)
+LEFT JOIN    "XXXXf".staff AS staff_4 ON staff_4.employee = SPLIT_PART(t.qc_staff, ';', 4)
+LEFT JOIN    "XXXX".staff AS staff_5 ON staff_5.employee = SPLIT_PART(t.qc_staff, ';', 5)
