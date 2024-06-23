@@ -1,4 +1,8 @@
- CASE
+--------------------------------------------------
+-- SELECT part
+--------------------------------------------------
+
+CASE
         WHEN staff_2.employee_name_text IS NOT NULL THEN '; ' || MAX(staff_2.employee_name_text)
         ELSE ''
     END,
@@ -10,6 +14,9 @@
     MAX(staff_5.employee_name_text)
 ) AS "employee_name_text"
 
+--------------------------------------------------
+-- FROM part
+--------------------------------------------------
 
 LEFT JOIN    "XXXX".staff AS csstaff ON csstaff.employee = t.qc_staff
 LEFT JOIN    "XXXX".staff AS staff_1 ON staff_1.employee = SPLIT_PART(t.qc_staff, ';', 1)
